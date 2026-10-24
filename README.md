@@ -6,7 +6,7 @@ A simulated university campus network built using Cisco Packet Tracer to gain ha
 
 The diagram below illustrates the planned network design for the main and branch campuses, including the proposed VLAN structure.
 
-![Secure University Campus Network Topology](Day-01-Topology-Design/campus-topology.png)
+![Secure University Campus Network Topology](Day-01-Topology-Design/campus-topology.png.png)
 
 *Note: IP addressing, inter-VLAN routing, DHCP, campus routing, and security configurations will be implemented and tested in upcoming stages.*
 
