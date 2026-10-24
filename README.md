@@ -2,6 +2,10 @@
 
 Building a simulated university network (main campus + branch campus) using Cisco Packet Tracer to practice real-world networking concepts.
 
+##Network Topology
+
+The diagram below illustrates the planned network design for the main and branch campuses, including the proposed VLAN structure.
+
 ## What's in the lab?
 * Departments & Labs: Separated using VLANs and inter-VLAN routing
 * Services:Automated IP assignment via DHCP and remote management via SSH
