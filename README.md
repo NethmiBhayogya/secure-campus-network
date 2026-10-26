@@ -64,297 +64,95 @@ The routers are connected through a point-to-point Ethernet link using the 10.10
 
 ## VLAN and IP Addressing Plan
 
-# Main Campus
-
-VLAN ID
-
-VLAN Name
-
-Network Address
-
-Default Gateway
-
-10
-
-ADMIN
-
-10.10.10.0/24
-
-10.10.10.1
-
-20
-
-FINANCE
-
-10.10.20.0/24
-
-10.10.20.1
-
-30
-
-STUDENTS
-
-10.10.30.0/24
-
-10.10.30.1
-
-40
-
-IT
-
-10.10.40.0/24
-
-10.10.40.1
-
-50
-
-SERVERS
-
-10.10.50.0/24
-
-10.10.50.1
-
-60
-
-GUEST_WIFI
-
-10.10.60.0/24
-
-10.10.60.1
-
-# Branch Campus
-
-VLAN ID
-
-VLAN Name
-
-Network Address
-
-Default Gateway
-
-30
-
-STUDENTS
-
-10.10.70.0/24
-
-10.10.70.1
-
-60
-
-GUEST_WIFI
-
-10.10.80.0/24
-
-10.10.80.1
-
-# Router-to-Router Link
-
-Router
-
-Interface
-
-IP Address
-
-Subnet Mask
-
-R1-MAIN
-
-GigabitEthernet0/1
-
-10.10.254.1
-
-255.255.255.252
-
-R2-BRANCH
-
-GigabitEthernet0/1
-
-10.10.254.2
-
-255.255.255.252
-
-# End-Device IP Addressing
-
-Device
-
-IP Address
-
-Default Gateway
-
-PC1-ADMIN
-
-10.10.10.10
-
-10.10.10.1
-
-PC2-FINANCE
-
-10.10.20.10
-
-10.10.20.1
-
-PC3-STUDENT
-
-10.10.30.10
-
-10.10.30.1
-
-PC4-STUDENT
-
-10.10.30.11
-
-10.10.30.1
-
-PC5-IT
-
-10.10.40.10
-
-10.10.40.1
-
-PC6-BRANCH
-
-10.10.70.10
-
-10.10.70.1
-
-SERVER1-DHCP
-
-10.10.50.10
-
-10.10.50.1
-
-SERVER2-WEB
-
-10.10.50.20
-
-10.10.50.1
-
-AP1-MAIN
-
-10.10.60.2
-
-10.10.60.1
-
-LAPTOP1-GUEST
-
-10.10.60.10
-
-10.10.60.1
-
-AP2-BRANCH
-
-10.10.80.2
-
-10.10.80.1
-
-LAPTOP2-STAFF
-
-10.10.80.10
-
-10.10.80.1
-
-Note: Update this table if the actual Packet Tracer configuration changes.
+### Main Campus
+
+| VLAN ID | VLAN Name | Network Address | Default Gateway |
+|:---:|---|---|---|
+| 10 | ADMIN | `10.10.10.0/24` | `10.10.10.1` |
+| 20 | FINANCE | `10.10.20.0/24` | `10.10.20.1` |
+| 30 | STUDENTS | `10.10.30.0/24` | `10.10.30.1` |
+| 40 | IT | `10.10.40.0/24` | `10.10.40.1` |
+| 50 | SERVERS | `10.10.50.0/24` | `10.10.50.1` |
+| 60 | GUEST_WIFI | `10.10.60.0/24` | `10.10.60.1` |
+
+### Branch Campus
+
+| VLAN ID | VLAN Name | Network Address | Default Gateway |
+|:---:|---|---|---|
+| 30 | STUDENTS | `10.10.70.0/24` | `10.10.70.1` |
+| 60 | GUEST_WIFI | `10.10.80.0/24` | `10.10.80.1` |
+
+### Router-to-Router Link
+
+| Router | Interface | IP Address | Subnet Mask |
+|---|---|---|---|
+| R1-MAIN | GigabitEthernet0/1 | `10.10.254.1` | `255.255.255.252` |
+| R2-BRANCH | GigabitEthernet0/1 | `10.10.254.2` | `255.255.255.252` |
+
+## End-Device IP Addressing
+
+| Device | IP Address | Default Gateway |
+|---|---|---|
+| PC1-ADMIN | `10.10.10.10` | `10.10.10.1` |
+| PC2-FINANCE | `10.10.20.10` | `10.10.20.1` |
+| PC3-STUDENT | `10.10.30.10` | `10.10.30.1` |
+| PC4-STUDENT | `10.10.30.11` | `10.10.30.1` |
+| PC5-IT | `10.10.40.10` | `10.10.40.1` |
+| PC6-BRANCH | `10.10.70.10` | `10.10.70.1` |
+| SERVER1-DHCP | `10.10.50.10` | `10.10.50.1` |
+| SERVER2-WEB | `10.10.50.20` | `10.10.50.1` |
+| AP1-MAIN | `10.10.60.2` | `10.10.60.1` |
+| LAPTOP1-GUEST | `10.10.60.10` | `10.10.60.1` |
+| AP2-BRANCH | `10.10.80.2` | `10.10.80.1` |
+| LAPTOP2-STAFF | `10.10.80.10` | `10.10.80.1` |
+
+*Note: Update this table if the actual Packet Tracer configuration changes.*
 
 ## Day 1 — Topology Design and VLAN Configuration
 
-# Completed Tasks
+### Completed Tasks
 
-Designed the initial main-campus and branch-campus topology.
+- Designed the initial main-campus and branch-campus topology.
+- Added and named routers, switches, PCs, servers, access points, and laptops.
+- Connected the network devices.
+- Created the main-campus VLAN plan.
+- Created VLANs on the switches.
+- Configured relevant access ports and trunk links.
+- Prepared the network for IP addressing and routing.
 
-Added and named routers, switches, PCs, servers, access points, and laptops.
+### VLAN Configuration
 
-Connected the network devices.
-
-Created the main-campus VLAN plan.
-
-Created VLANs on the switches.
-
-Configured relevant access ports and trunk links.
-
-Prepared the network for IP addressing and routing.
-
-# VLAN Configuration
-
-VLAN 10 — ADMIN
-
-VLAN 20 — FINANCE
-
-VLAN 30 — STUDENTS
-
-VLAN 40 — IT
-
-VLAN 50 — SERVERS
-
-VLAN 60 — GUEST_WIFI
+- VLAN 10 — ADMIN
+- VLAN 20 — FINANCE
+- VLAN 30 — STUDENTS
+- VLAN 40 — IT
+- VLAN 50 — SERVERS
+- VLAN 60 — GUEST_WIFI
 
 ## Day 2 — IP Addressing and Routing
 
-# Completed Tasks
+### Completed Tasks
 
-Configured IPv4 addresses and default gateways for end devices.
+- Configured IPv4 addresses and default gateways for end devices.
+- Configured the point-to-point link between R1-MAIN and R2-BRANCH.
+- Configured router subinterfaces for inter-VLAN routing.
+- Configured static routes between the main and branch campuses.
+- Verified default gateway connectivity for the tested devices.
+- Tested inter-VLAN communication.
+- Tested communication between the main and branch campuses.
+- Verified branch-campus connectivity to the main-campus server IP address.
+- Tested wireless connectivity across the campuses.
 
-Configured the point-to-point link between R1-MAIN and R2-BRANCH.
+### Connectivity Test Results
 
-Configured router subinterfaces for inter-VLAN routing.
+The following ping tests completed successfully with four replies and `0%` packet loss.
 
-Configured static routes between the main and branch campuses.
-
-Verified default gateway connectivity for the tested devices.
-
-Tested inter-VLAN communication.
-
-Tested communication between the main and branch campuses.
-
-Verified branch-campus connectivity to the main-campus web server IP address.
-
-Tested wireless connectivity across the campuses.
-
-## Connectivity Test Results
-
-The following ping tests completed successfully with four replies and 0% packet loss.
-
-Test
-
-Source
-
-Destination
-
-Result
-
-Inter-VLAN routing
-
-PC1-ADMIN
-
-PC2-FINANCE
-
-PASS
-
-Main-to-branch connectivity
-
-PC1-ADMIN
-
-PC6-BRANCH
-
-PASS
-
-Branch-to-server connectivity
-
-PC6-BRANCH
-
-SERVER2-WEB
-
-PASS
-
-Wireless cross-campus connectivity
-
-LAPTOP1-GUEST
-
-LAPTOP2-STAFF
-
-PASS
-
-These tests verify the listed communication paths. They do not mean that every possible network path or security policy has been tested.
+| Test | Source | Destination | Result |
+|---|---|---|:---:|
+| Inter-VLAN routing | PC1-ADMIN | PC2-FINANCE | PASS |
+| Main-to-branch connectivity | PC1-ADMIN | PC6-BRANCH | PASS |
+| Branch-to-server connectivity | PC6-BRANCH | SERVER2-WEB | PASS |
+| Wireless cross-campus connectivity | LAPTOP1-GUEST | LAPTOP2-STAFF | PASS |
 
 ## Connectivity Test Screenshots
 
