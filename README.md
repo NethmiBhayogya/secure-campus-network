@@ -362,19 +362,18 @@ Upload the screenshots to the Day-02-IP-Addressing-and-Routing/ folder to displa
 
 Inter-VLAN Routing Test
 This test verifies communication between devices in different VLANs
-Day-02-IP-Addressing-and-Routing/inter-vlan-routing-test.png
+![Inter-VLAN Routing Test](Day-02-IP-Addressing-and-Routing/inter-vlan-routing-test.png)
 
 
 
 Main-to-Branch Connectivity
 This test verifies communication between the main campus and the branch campus.
-Day-02-IP-Addressing-and-Routing/main-to-branch-connectivity.png
-
+![Main-to-Branch Connectivity](Day-02-IP-Addressing-and-Routing/main-to-branch-connectivity.png)
 
 
 Branch-to-Server Connectivity
 This test verifies that a device in the branch campus can communicate with the main-campus server.
-Day-02-IP-Addressing-and-Routing/branch-to-server-connectivity.png
+![Branch-to-Server Connectivity](Day-02-IP-Addressing-and-Routing/branch-to-server-connectivity.png)
 
 Note: Ensure the screenshot filenames and folder paths match the files uploaded to GitHub.
 
