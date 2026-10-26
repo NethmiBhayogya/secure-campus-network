@@ -106,7 +106,6 @@ The routers are connected through a point-to-point Ethernet link using the 10.10
 | AP2-BRANCH | `10.10.80.2` | `10.10.80.1` |
 | LAPTOP2-STAFF | `10.10.80.10` | `10.10.80.1` |
 
-*Note: Update this table if the actual Packet Tracer configuration changes.*
 
 ## Day 1 — Topology Design and VLAN Configuration
 
