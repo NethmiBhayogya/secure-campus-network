@@ -10,7 +10,7 @@ The diagram below illustrates the planned network design for the main and branch
 
 *Note: IP addressing, inter-VLAN routing, DHCP, campus routing, and security configurations will be implemented and tested in upcoming stages.*
 
-Project Objectives
+## Project Objectives
 
 Design and implement a university campus network using Cisco Packet Tracer.
 
@@ -28,7 +28,7 @@ Improve network security using SSH, switch port security, and Access Control Lis
 
 Test connectivity and document the implementation.
 
-Technology Stack
+## Technology Stack
 
 Cisco Packet Tracer
 
@@ -52,7 +52,7 @@ Wireless LAN (WLAN)
 
 Access Control Lists (ACLs) (planned)
 
-Network Design
+## Network Design
 
 The network contains two locations:
 
@@ -62,9 +62,9 @@ Branch Campus: STUDENTS and GUEST_WIFI VLANs, using separate IP subnets from the
 
 The routers are connected through a point-to-point Ethernet link using the 10.10.254.0/30 network. Static routes allow the two campuses to communicate.
 
-VLAN and IP Addressing Plan
+## VLAN and IP Addressing Plan
 
-Main Campus
+# Main Campus
 
 VLAN ID
 
@@ -122,7 +122,7 @@ GUEST_WIFI
 
 10.10.60.1
 
-Branch Campus
+# Branch Campus
 
 VLAN ID
 
@@ -148,7 +148,7 @@ GUEST_WIFI
 
 10.10.80.1
 
-Router-to-Router Link
+# Router-to-Router Link
 
 Router
 
@@ -174,7 +174,7 @@ GigabitEthernet0/1
 
 255.255.255.252
 
-End-Device IP Addressing
+# End-Device IP Addressing
 
 Device
 
@@ -254,11 +254,11 @@ LAPTOP2-STAFF
 
 10.10.80.1
 
-Note: The table documents the planned and assigned addresses. Update it if the actual Packet Tracer configuration changes.
+Note: Update this table if the actual Packet Tracer configuration changes.
 
-Day 1 — Topology Design and VLAN Configuration
+## Day 1 — Topology Design and VLAN Configuration
 
-Completed Tasks
+# Completed Tasks
 
 Designed the initial main-campus and branch-campus topology.
 
@@ -274,7 +274,7 @@ Configured relevant access ports and trunk links.
 
 Prepared the network for IP addressing and routing.
 
-VLANs
+# VLAN Configuration
 
 VLAN 10 — ADMIN
 
@@ -288,11 +288,11 @@ VLAN 50 — SERVERS
 
 VLAN 60 — GUEST_WIFI
 
-Day 2 — IP Addressing and Routing
+## Day 2 — IP Addressing and Routing
 
-Completed Tasks
+# Completed Tasks
 
-Configured IPv4 addresses and default gateways for the end devices.
+Configured IPv4 addresses and default gateways for end devices.
 
 Configured the point-to-point link between R1-MAIN and R2-BRANCH.
 
@@ -304,13 +304,13 @@ Verified default gateway connectivity for the tested devices.
 
 Tested inter-VLAN communication.
 
-Tested communication between the main campus and branch campus.
+Tested communication between the main and branch campuses.
 
 Verified branch-campus connectivity to the main-campus web server IP address.
 
 Tested wireless connectivity across the campuses.
 
-Connectivity Test Results
+## Connectivity Test Results
 
 The following ping tests completed successfully with four replies and 0% packet loss.
 
@@ -354,27 +354,31 @@ LAPTOP2-STAFF
 
 PASS
 
-These tests verify the listed communication paths. They do not imply that every possible network path or security policy has been tested.
+These tests verify the listed communication paths. They do not mean that every possible network path or security policy has been tested.
 
-Connectivity Test Screenshots
+## Connectivity Test Screenshots
 
-After uploading the screenshots to Day-02-IP-Addressing-and-Routing/, they can be displayed here.
+Upload the screenshots to the Day-02-IP-Addressing-and-Routing/ folder to display them here.
 
 Inter-VLAN Routing Test
+This test verifies communication between devices in different VLANs
+Day-02-IP-Addressing-and-Routing/inter-vlan-routing-test.png
 
 
 
 Main-to-Branch Connectivity
+This test verifies communication between the main campus and the branch campus.
+Day-02-IP-Addressing-and-Routing/main-to-branch-connectivity.png
 
 
 
 Branch-to-Server Connectivity
+This test verifies that a device in the branch campus can communicate with the main-campus server.
+Day-02-IP-Addressing-and-Routing/branch-to-server-connectivity.png
 
+Note: Ensure the screenshot filenames and folder paths match the files uploaded to GitHub.
 
-
-Make sure the screenshot filenames and folder paths match the files uploaded to GitHub.
-
-Repository Structure
+## Repository Structure
 
 secure-campus-network/
 ├── README.md
@@ -391,9 +395,9 @@ secure-campus-network/
 └── packet-tracer/
     └── Secure-University-Campus-Network.pkt
 
-Note: This represents the intended project structure. Ensure the files have been uploaded and their filenames match before relying on the links.
+Note: This represents the intended project structure. Upload the files and ensure their filenames match before relying on these paths.
 
-Remaining Tasks
+## Remaining Tasks
 
 Configure and test the DHCP service.
 
@@ -409,7 +413,7 @@ Perform additional connectivity and security tests.
 
 Document the completed configurations and test results.
 
-Project Goals
+## Project Goals
 
 Develop practical Cisco networking and troubleshooting skills.
 
@@ -419,10 +423,10 @@ Build a documented networking portfolio for internship applications.
 
 Gain hands-on experience with networking concepts covered in CCNA studies.
 
-Project Status
+## Project Status
 
 Completed: Initial topology design, VLAN configuration, IP addressing, router-on-a-stick inter-VLAN routing, static routing, and the documented connectivity tests.
 
-Next stage: Configure and test DHCP services.
+Next Stage: Configure and test DHCP services.
 
 This project is being developed step by step using Cisco Packet Tracer. Configuration files, documentation, screenshots, and test results will be added as each stage is completed.
