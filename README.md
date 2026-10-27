@@ -172,32 +172,71 @@ Branch-to-Server Connectivity
 This test verifies that a device in the branch campus can communicate with the main-campus server.
 ![Branch-to-Server Connectivity](Day-02-IP-Addressing-and-Routing/branch-to-server-connectivity.png)
 
-Note: Ensure the screenshot filenames and folder paths match the files uploaded to GitHub.
+## Day 3 — DHCP Configuration
+### Objectives
+- Configure the DHCP service on `SERVER1-DHCP`.
+- Create separate DHCP pools for the required networks.
+- Configure DHCP relay on the routers using `ip helper-address`.
+- Obtain IP addresses automatically on client devices.
+- Verify DHCP assignments and connectivity.
 
-## Repository Structure
+### DHCP Server Configuration
+The DHCP service was enabled on `SERVER1-DHCP` with the static IP address `10.10.50.10/24` and default gateway `10.10.50.1`. Seven DHCP pools were created to provide addresses to clients in the main and branch campuses:
 
-secure-campus-network/
-├── README.md
-├── Day-01-Topology-Design/
-│   ├── requirements.md
-│   ├── vlan-plan.md
-│   └── campus-topology.png.png
-├── Day-02-IP-Addressing-and-Routing/
-│   ├── ip-addressing-plan.md
-│   ├── static-routing.md
-│   ├── inter-vlan-routing-test.png
-│   ├── main-to-branch-connectivity.png
-│   └── branch-to-server-connectivity.png
-└── packet-tracer/
-    └── Secure-University-Campus-Network.pkt
+| DHCP Pool Name | Network | Default Gateway | Starting IP |
+| :--- | :--- | :--- | :--- |
+| `ADMIN_POOL` | 10.10.10.0/24 | 10.10.10.1 | 10.10.10.100 |
+| `FINANCE_POOL` | 10.10.20.0/24 | 10.10.20.1 | 10.10.20.100 |
+| `STUDENTS_MAIN_POOL` | 10.10.30.0/24 | 10.10.30.1 | 10.10.30.100 |
+| `IT_POOL` | 10.10.40.0/24 | 10.10.40.1 | 10.10.40.100 |
+| `GUEST_MAIN_POOL` | 10.10.60.0/24 | 10.10.60.1 | 10.10.60.100 |
+| `STUDENTS_BRANCH_POOL` | 10.10.70.0/24 | 10.10.70.1 | 10.10.70.100 |
+| `GUEST_BRANCH_POOL` | 10.10.80.0/24 | 10.10.80.1 | 10.10.80.100 |
 
-Note: This represents the intended project structure. Upload the files and ensure their filenames match before relying on these paths.
+*Each pool uses subnet mask `255.255.255.0`.*
+
+### DHCP Relay Configuration
+The `ip helper-address 10.10.50.10` command was configured on router subinterfaces:
+- **R1-MAIN:** VLANs 10, 20, 30, 40, and 60.
+- **R2-BRANCH:** VLANs 30 and 60.
+
+### DHCP Verification Sample
+| Client Device | Assigned DHCP Address | Default Gateway |
+| :--- | :--- | :--- |
+| PC1-ADMIN | 10.10.10.100 | 10.10.10.1 |
+| PC6-BRANCH | 10.10.70.100 | 10.10.70.1 |
+
+The other client devices were also switched to DHCP and successfully obtained their IP addresses. Servers and access points retain their static IP addresses.
+
+# Connectivity Test Results After DHCP
+| Test Source | Test Destination | Result |
+| :--- | :--- | :--- |
+| Inter-VLAN connectivity (PC1-ADMIN) | PC2-FINANCE | PASS |
+| Main-to-branch connectivity (PC1-ADMIN) | PC6-BRANCH | PASS |
+| Wireless cross-campus connectivity (LAPTOP1-GUEST) | LAPTOP2-STAFF | PASS |
+
+All three final ping tests completed successfully with four replies and 0% packet loss.
+
+# Day 3 Screenshots
+Upload the screenshots to the Day-03-DHCP-Configuration/screenshots/ folder using the filenames below.
+1. 01-DHCP-Pools.png — DHCP Pool Configuration
+   ![DHCP Pool Configuration](Day-03-DHCP-Configuration/screenshots/01-DHCP-Pools.png)
+
+2. 02-DHCP-Client-IP.png — DHCP Client IP Configuration
+   ![DHCP Client IP Configuration](Day-03-DHCP-Configuration/screenshots/02-DHCP-Client-IP.png)
+   
+3. 03-Inter-VLAN-Ping.png — Inter-VLAN Connectivity
+   ![Inter-VLAN Connectivity](Day-03-DHCP-Configuration/screenshots/03-Inter-VLAN-Ping.png)
+   
+4. 04-Inter-Campus-Ping.png — Inter-Campus Connectivity
+   ![Inter-Campus Connectivity](Day-03-DHCP-Configuration/screenshots/04-Inter-Campus-Ping.png)
+   
+5. 05-Wireless-Ping.png — Wireless Connectivity
+   ![Wireless Connectivity](Day-03-DHCP-Configuration/screenshots/05-Wireless-Ping.png)
 
 ## Remaining Tasks
 
-Configure and test the DHCP service.
-
-Configure and test the web service.
+Configure and test the web service on SERVER2-WEB.
 
 Configure SSH for secure remote device management.
 
@@ -207,7 +246,7 @@ Configure and test Access Control Lists (ACLs).
 
 Perform additional connectivity and security tests.
 
-Document the completed configurations and test results.
+Complete the configuration documentation and final project verification.
 
 ## Project Goals
 
@@ -221,8 +260,9 @@ Gain hands-on experience with networking concepts covered in CCNA studies.
 
 ## Project Status
 
-Completed: Initial topology design, VLAN configuration, IP addressing, router-on-a-stick inter-VLAN routing, static routing, and the documented connectivity tests.
+Completed: Topology design, VLAN configuration, IPv4 addressing, router-on-a-stick inter-VLAN routing, static routing, DHCP pools, DHCP relay, DHCP client verification, and connectivity testing.
 
-Next Stage: Configure and test DHCP services.
+Next Stage: Configure and test the web service, followed by SSH, switch port security, and ACLs.
 
 This project is being developed step by step using Cisco Packet Tracer. Configuration files, documentation, screenshots, and test results will be added as each stage is completed.
+
