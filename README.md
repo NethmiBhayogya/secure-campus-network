@@ -221,18 +221,23 @@ All three final ping tests completed successfully with four replies and 0% packe
 Upload the screenshots to the Day-03-DHCP-Configuration folder using the filenames below:
 
 1. **DHCP Pool Configuration:**
+   
    ![DHCP Pool Configuration](Day-03-DHCP-Configuration/DHCP-Pools.png)
 
 2. **DHCP Client IP Configuration:**
+   
    ![DHCP Client IP Configuration](Day-03-DHCP-Configuration/DHCP-Client-IP.png)
 
 3. **Inter-VLAN Connectivity:**
+   
    ![Inter-VLAN Connectivity](Day-03-DHCP-Configuration/Inter-VLAN-Ping.png)
 
 4. **Inter-Campus Connectivity:**
+   
    ![Inter-Campus Connectivity](Day-03-DHCP-Configuration/Inter-Campus-Ping.png)
 
 5. **Wireless Connectivity:**
+    
    ![Wireless Connectivity](Day-03-DHCP-Configuration/Wireless-Ping.png)
    
 ## Repository Structure
