@@ -218,9 +218,9 @@ The other client devices were also switched to DHCP and successfully obtained th
 All three final ping tests completed successfully with four replies and 0% packet loss.
 
 ## Day 3 Screenshots
-Upload the screenshots to the `Day-03-DHCP-Configuration/` folder using the filenames below:
+Upload the screenshots to the Day-03-DHCP-Configuration folder using the filenames below:
 
-11. **DHCP Pool Configuration:**
+1. **DHCP Pool Configuration:**
    ![DHCP Pool Configuration](Day-03-DHCP-Configuration/DHCP-Pools.png)
 
 2. **DHCP Client IP Configuration:**
