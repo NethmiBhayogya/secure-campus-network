@@ -217,22 +217,40 @@ The other client devices were also switched to DHCP and successfully obtained th
 
 All three final ping tests completed successfully with four replies and 0% packet loss.
 
-# Day 3 Screenshots
-Upload the screenshots to the Day-03-DHCP-Configuration/screenshots/ folder using the filenames below.
-1. 01-DHCP-Pools.png — DHCP Pool Configuration
-   ![DHCP Pool Configuration](Day-03-DHCP-Configuration/screenshots/01-DHCP-Pools.png)
+## Day 3 Screenshots
+Upload the screenshots to the `Day-03-DHCP-Configuration/` folder using the filenames below:
 
-2. 02-DHCP-Client-IP.png — DHCP Client IP Configuration
-   ![DHCP Client IP Configuration](Day-03-DHCP-Configuration/screenshots/02-DHCP-Client-IP.png)
-   
-3. 03-Inter-VLAN-Ping.png — Inter-VLAN Connectivity
-   ![Inter-VLAN Connectivity](Day-03-DHCP-Configuration/screenshots/03-Inter-VLAN-Ping.png)
-   
-4. 04-Inter-Campus-Ping.png — Inter-Campus Connectivity
-   ![Inter-Campus Connectivity](Day-03-DHCP-Configuration/screenshots/04-Inter-Campus-Ping.png)
-   
-5. 05-Wireless-Ping.png — Wireless Connectivity
-   ![Wireless Connectivity](Day-03-DHCP-Configuration/screenshots/05-Wireless-Ping.png)
+1. **DHCP Pool Configuration:**  
+   `![DHCP Pool Configuration](Day-03-DHCP-Configuration/DHCP-Pools.png)`
+2. **DHCP Client IP Configuration:**  
+   `![DHCP Client IP Configuration](Day-03-DHCP-Configuration/DHCP-Client-IP.png)`
+3. **Inter-VLAN Connectivity:**  
+   `![Inter-VLAN Connectivity](Day-03-DHCP-Configuration/Inter-VLAN-Ping.png)`
+4. **Inter-Campus Connectivity:**  
+   `![Inter-Campus Connectivity](Day-03-DHCP-Configuration/Inter-Campus-Ping.png)`
+5. **Wireless Connectivity:**  
+   `![Wireless Connectivity](Day-03-DHCP-Configuration/Wireless-Ping.png)`
+## Repository Structure
+
+secure-campus-network/
+├── README.md
+├── Day-01-Topology-Design/
+│   ├── requirements.md
+│   ├── vlan-plan.md
+│   └── campus-topology.png
+├── Day-02-IP-Addressing-and-Routing/
+│   ├── ip-addressing-plan.md
+│   ├── static-routing.md
+│   ├── inter-vlan-routing-test.png
+│   ├── main-to-branch-connectivity.png
+│   └── branch-to-server-connectivity.png
+├── Day-03-DHCP-Configuration/
+│   ├── Day-03-DHCP-Configuration.md
+│   ├── DHCP-Client-IP.png
+│   ├── DHCP-Pools.png
+│   ├── Inter-Campus-Ping.png
+│   ├── Inter-VLAN-Ping.png
+│   └── Wireless-Ping.png
 
 ## Remaining Tasks
 
