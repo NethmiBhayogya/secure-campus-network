@@ -60,13 +60,13 @@ Both tests successfully displayed the default Cisco Packet Tracer welcome page.
 
 This screenshot demonstrates that PC1-ADMIN can access the web server using HTTP.
 
-![Main Campus Web Test](screenshots/main-campus-web-test.png)
+![Main Campus Web Test](Day-04-Web-Server-Configuration/main-campus-web-test.png)
 
 ### 2. Branch-Campus Web Server Test
 
 This screenshot demonstrates that PC6-BRANCH can access the main-campus web server.
 
-![Branch Campus Web Test](screenshots/branch-campus-web-test.png)
+![Branch Campus Web Test](Day-04-Web-Server-Configuration/branch-campus-web-test.png)
 
 ## What I Learned
 
