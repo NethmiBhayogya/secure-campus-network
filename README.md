@@ -240,20 +240,44 @@ Upload the screenshots to the Day-03-DHCP-Configuration folder using the filenam
     
    ![Wireless Connectivity](Day-03-DHCP-Configuration/Wireless-Ping.png)
    
+## Day 4 — Web Server Configuration
+### Objectives
+- Configure `SERVER2-WEB` with a static IP address (`10.10.50.20`).
+- Enable and customize the HTTP/HTTPS web service on `SERVER2-WEB`.
+- Test web accessibility from clients across different VLANs in the main campus.
+- Test cross-campus web access from the branch campus (`PC6-BRANCH`) to the main-campus web server.
+
+### Web Server Details
+- **Server Name:** `SERVER2-WEB`
+- **IP Address:** `10.10.50.20`
+- **Subnet Mask:** `255.255.255.0`
+- **Default Gateway:** `10.10.50.1`
+- **Service:** HTTP/HTTPS (Enabled)
+
+### Day 4 Screenshots
+1. **Main-Campus Web Server Test:**  
+   This screenshot demonstrates that `PC1-ADMIN` can access the web server using HTTP.  
+   ![Main Campus Web Test](Day-04-Web-Server-Configuration/main-campus-web-test.png)
+
+2. **Branch-Campus Web Server Test:**  
+   This screenshot demonstrates that `PC6-BRANCH` can access the main-campus web server.  
+   ![Branch Campus Web Test](Day-04-Web-Server-Configuration/branch-campus-web-test.png)
+
+---
 ## Repository Structure
 
 secure-campus-network/
 ├── README.md
 ├── Day-01-Topology-Design/
+│   ├── campus-topology.png.png
 │   ├── requirements.md
-│   ├── vlan-plan.md
-│   └── campus-topology.png
+│   └── vlan-plan.md
 ├── Day-02-IP-Addressing-and-Routing/
-│   ├── ip-addressing-plan.md
-│   ├── static-routing.md
+│   ├── branch-to-server-connectivity.png
 │   ├── inter-vlan-routing-test.png
+│   ├── ip-addressing-plan.md
 │   ├── main-to-branch-connectivity.png
-│   └── branch-to-server-connectivity.png
+│   └── static-routing.md
 ├── Day-03-DHCP-Configuration/
 │   ├── Day-03-DHCP-Configuration.md
 │   ├── DHCP-Client-IP.png
@@ -261,14 +285,32 @@ secure-campus-network/
 │   ├── Inter-Campus-Ping.png
 │   ├── Inter-VLAN-Ping.png
 │   └── Wireless-Ping.png
+├── Day-04-Web-Server-Configuration/
+│   ├── Day-04-Web-Server-Configuration.md
+│   ├── branch-campus-web-test.png
+│   └── main-campus-web-test.png
+└── packet-tracer/
+    └── Secure-University-Campus-Network.pkt
+
+## What I Learned
+
+How to enable and test an HTTP service.
+
+How to access a website using an IPv4 address.
+
+How inter-VLAN routing allows clients to access servers in another VLAN.
+
+How static routing enables communication between the main and branch campuses.
+
+How to document network testing results.
+
+Day 4 Status: Completed
 
 ## Remaining Tasks
 
-Configure and test the web service on SERVER2-WEB.
-
 Configure SSH for secure remote device management.
 
-Implement switch port security.
+Implement and test switch port security.
 
 Configure and test Access Control Lists (ACLs).
 
@@ -288,9 +330,8 @@ Gain hands-on experience with networking concepts covered in CCNA studies.
 
 ## Project Status
 
-Completed: Topology design, VLAN configuration, IPv4 addressing, router-on-a-stick inter-VLAN routing, static routing, DHCP pools, DHCP relay, DHCP client verification, and connectivity testing.
+Completed: Topology design, VLAN configuration, IPv4 addressing, router-on-a-stick inter-VLAN routing, static routing, DHCP pools, DHCP relay, DHCP client verification, connectivity testing, and HTTP web server configuration and testing.
 
-Next Stage: Configure and test the web service, followed by SSH, switch port security, and ACLs.
+Next Stage: Configure SSH for secure remote device management, followed by switch port security and ACLs.
 
 This project is being developed step by step using Cisco Packet Tracer. Configuration files, documentation, screenshots, and test results will be added as each stage is completed.
-
