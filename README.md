@@ -348,36 +348,6 @@ Port security was implemented on six PC-facing access ports to prevent unauthori
 
 ---
 
-### Day 05 Verification Screenshots
-
-#### SSH Remote Management Screenshots
-1. **R1-MAIN SSH Verification:**  
-   ![R1-MAIN SSH](Day-05-SSH-and-Port-Security/screenshots/ssh-r1-main.png)
-2. **R2-BRANCH SSH Verification:**  
-   ![R2-BRANCH SSH](Day-05-SSH-and-Port-Security/screenshots/ssh-r2-branch.png)
-3. **SW1-CORE SSH Verification:**  
-   ![SW1-CORE SSH](Day-05-SSH-and-Port-Security/screenshots/ssh-sw1-core.png)
-4. **SW2-ADMIN SSH Verification:**  
-   ![SW2-ADMIN SSH](Day-05-SSH-and-Port-Security/screenshots/ssh-sw2-admin.png)
-5. **SW3-FACULTY SSH Verification:**  
-   ![SW3-FACULTY SSH](Day-05-SSH-and-Port-Security/screenshots/ssh-sw3-faculty.png)
-6. **SW4-BRANCH SSH Verification:**  
-   ![SW4-BRANCH SSH](Day-05-SSH-and-Port-Security/screenshots/ssh-sw4-branch.png)
-
-#### Switch Port Security Screenshots
-1. **SW2-ADMIN Port Security:**  
-   ![SW2-ADMIN Port Security](Day-05-SSH-and-Port-Security/screenshots/port-security-sw2.png)
-2. **SW3-FACULTY Port Security Summary:**  
-   ![SW3-FACULTY Port Security Summary](Day-05-SSH-and-Port-Security/screenshots/port-security-sw3-summary.png)
-3. **SW3-FACULTY Port Security Interface Details:**  
-   ![SW3-FACULTY Port Security Details](Day-05-SSH-and-Port-Security/screenshots/port-security-sw3-details.png)
-4. **SW4-BRANCH Port Security:**  
-   ![SW4-BRANCH Port Security](Day-05-SSH-and-Port-Security/screenshots/port-security-sw4.png)
-
-**Day 05 Status:** Completed
-
----
-
 ### Project Summary & Status
 
 ### What I Learned
