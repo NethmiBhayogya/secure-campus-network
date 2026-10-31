@@ -260,78 +260,169 @@ Upload the screenshots to the Day-03-DHCP-Configuration folder using the filenam
    ![Main Campus Web Test](Day-04-Web-Server-Configuration/main-campus-web-test.png)
 
 2. **Branch-Campus Web Server Test:**  
-   This screenshot demonstrates that `PC6-BRANCH` can access the main-campus web server.  
-   ![Branch Campus Web Test](Day-04-Web-Server-Configuration/branch-campus-web-test.png)
+   This screenshot demonstrates that `PC6-BRANCH` can access the main-campus web server.
+
+   ---
+
+## Day 05 — SSH and Port Security
+
+### Objectives
+- Configure secure remote device management using SSH Version 2.
+- Configure management IP addresses on network devices.
+- Enable local username authentication.
+- Restrict remote management access to SSH.
+- Implement switch port security on user-facing access ports.
+- Verify SSH connectivity and port security configurations.
 
 ---
-## Repository Structure
 
-secure-campus-network/
-├── README.md
-├── Day-01-Topology-Design/
-│   ├── campus-topology.png.png
-│   ├── requirements.md
-│   └── vlan-plan.md
-├── Day-02-IP-Addressing-and-Routing/
-│   ├── branch-to-server-connectivity.png
-│   ├── inter-vlan-routing-test.png
-│   ├── ip-addressing-plan.md
-│   ├── main-to-branch-connectivity.png
-│   └── static-routing.md
-├── Day-03-DHCP-Configuration/
-│   ├── Day-03-DHCP-Configuration.md
-│   ├── DHCP-Client-IP.png
-│   ├── DHCP-Pools.png
-│   ├── Inter-Campus-Ping.png
-│   ├── Inter-VLAN-Ping.png
-│   └── Wireless-Ping.png
-├── Day-04-Web-Server-Configuration/
-│   ├── Day-04-Web-Server-Configuration.md
-│   ├── branch-campus-web-test.png
-│   └── main-campus-web-test.png
-└── packet-tracer/
-    └── Secure-University-Campus-Network.pkt
+### 1. SSH Configuration
+SSH Version 2 was configured on all six network devices to provide secure remote access for network administration.
 
-## What I Learned
+**Devices configured:**
+- `R1-MAIN`
+- `R2-BRANCH`
+- `SW1-CORE`
+- `SW2-ADMIN`
+- `SW3-FACULTY`
+- `SW4-BRANCH`
 
-How to enable and test an HTTP service.
+#### SSH Security Features
+- Configured domain name: `securecampus.local`.
+- Created local administrative account with privilege level 15.
+- Generated RSA key pair (1024-bit modulus).
+- Enforced SSH Version 2 (`ip ssh version 2`).
+- Configured VTY lines (`0 4`) with `login local` and `transport input ssh`.
+- Restricted remote management exclusively to SSH.
 
-How to access a website using an IPv4 address.
+#### Management IP Address Table
+| Device | Management VLAN | Management IP Address |
+| :--- | :--- | :--- |
+| `R1-MAIN` | VLAN 10 | `10.10.10.1` |
+| `R2-BRANCH` | VLAN 70 | `10.10.70.1` |
+| `SW1-CORE` | VLAN 10 | `10.10.10.3` |
+| `SW2-ADMIN` | VLAN 10 | `10.10.10.2` |
+| `SW3-FACULTY` | VLAN 10 | `10.10.10.4` |
+| `SW4-BRANCH` | VLAN 30 | `10.10.70.2` |
 
-How inter-VLAN routing allows clients to access servers in another VLAN.
+#### SSH Verification Commands
+- `show ip ssh`
+- `show ssh`
+- `show users`
+- `show privilege`
 
-How static routing enables communication between the main and branch campuses.
+*Verification confirmed successful remote login, SSH Version 2 enforcement, and privilege level 15 allocation across all six devices.*
 
-How to document network testing results.
+---
 
-Day 4 Status: Completed
+### 2. Switch Port Security
+Port security was implemented on six PC-facing access ports to prevent unauthorized device access across access switches.
 
-## Remaining Tasks
+#### Port Security Assignment Matrix
+| Switch | Interface | Connected Device | VLAN |
+| :--- | :--- | :--- | :--- |
+| `SW2-ADMIN` | `Fa0/1` | `PC1-ADMIN` | 10 |
+| `SW2-ADMIN` | `Fa0/2` | `PC2-FINANCE` | 20 |
+| `SW3-FACULTY` | `Fa0/1` | `PC3-STUDENT` | 30 |
+| `SW3-FACULTY` | `Fa0/2` | `PC4-STUDENT` | 30 |
+| `SW3-FACULTY` | `Fa0/3` | `PC5-IT` | 40 |
+| `SW4-BRANCH` | `Fa0/1` | `PC6-BRANCH` | 30 |
 
-Configure SSH for secure remote device management.
+#### Port Security Configuration Policy
+- Activated port security (`switchport port-security`).
+- Maximum MAC address limit: **1** (`switchport port-security maximum 1`).
+- Dynamic MAC learning: **Sticky** (`switchport port-security mac-address sticky`).
+- Violation mode: **Shutdown** (`switchport port-security violation shutdown`).
 
-Implement and test switch port security.
+*Trunk links and wireless access point interfaces were maintained without port security.*
 
-Configure and test Access Control Lists (ACLs).
+#### Verification Commands & Results
+- `show port-security`
+- `show port-security interface <interface_id>`
+- `show port-security address`
 
-Perform additional connectivity and security tests.
+**Results Summary:**
+- All 6 configured access ports operational state: `Secure-up`.
+- Dynamic sticky learning successfully registered connected device MAC addresses into running configuration.
+- Total security violations across all monitored ports: **0**.
 
-Complete the configuration documentation and final project verification.
+---
 
-## Project Goals
+### Day 05 Verification Screenshots
 
-Develop practical Cisco networking and troubleshooting skills.
+#### SSH Remote Management Screenshots
+1. **R1-MAIN SSH Verification:**  
+   ![R1-MAIN SSH](Day-05-SSH-and-Port-Security/screenshots/ssh-r1-main.png)
+2. **R2-BRANCH SSH Verification:**  
+   ![R2-BRANCH SSH](Day-05-SSH-and-Port-Security/screenshots/ssh-r2-branch.png)
+3. **SW1-CORE SSH Verification:**  
+   ![SW1-CORE SSH](Day-05-SSH-and-Port-Security/screenshots/ssh-sw1-core.png)
+4. **SW2-ADMIN SSH Verification:**  
+   ![SW2-ADMIN SSH](Day-05-SSH-and-Port-Security/screenshots/ssh-sw2-admin.png)
+5. **SW3-FACULTY SSH Verification:**  
+   ![SW3-FACULTY SSH](Day-05-SSH-and-Port-Security/screenshots/ssh-sw3-faculty.png)
+6. **SW4-BRANCH SSH Verification:**  
+   ![SW4-BRANCH SSH](Day-05-SSH-and-Port-Security/screenshots/ssh-sw4-branch.png)
 
-Understand how VLANs, routing, DHCP, and network security work together.
+#### Switch Port Security Screenshots
+1. **SW2-ADMIN Port Security:**  
+   ![SW2-ADMIN Port Security](Day-05-SSH-and-Port-Security/screenshots/port-security-sw2.png)
+2. **SW3-FACULTY Port Security Summary:**  
+   ![SW3-FACULTY Port Security Summary](Day-05-SSH-and-Port-Security/screenshots/port-security-sw3-summary.png)
+3. **SW3-FACULTY Port Security Interface Details:**  
+   ![SW3-FACULTY Port Security Details](Day-05-SSH-and-Port-Security/screenshots/port-security-sw3-details.png)
+4. **SW4-BRANCH Port Security:**  
+   ![SW4-BRANCH Port Security](Day-05-SSH-and-Port-Security/screenshots/port-security-sw4.png)
 
-Build a documented networking portfolio for internship applications.
+**Day 05 Status:** Completed
 
-Gain hands-on experience with networking concepts covered in CCNA studies.
+---
 
-## Project Status
+### Project Summary & Status
 
-Completed: Topology design, VLAN configuration, IPv4 addressing, router-on-a-stick inter-VLAN routing, static routing, DHCP pools, DHCP relay, DHCP client verification, connectivity testing, and HTTP web server configuration and testing.
+### What I Learned
+Through this project, I gained practical experience in:
+- Designing a campus network with multiple departments and locations.
+- Creating VLANs and configuring trunk links.
+- Implementing inter-VLAN routing using router-on-a-stick.
+- Configuring IPv4 addressing and static routing.
+- Setting up DHCP pools and DHCP relay.
+- Configuring and testing an HTTP web server.
+- Enabling secure remote management using SSH Version 2.
+- Configuring switch port security and sticky MAC address learning.
+- Verifying network configurations using Cisco IOS commands.
+- Troubleshooting connectivity and documenting network implementations.
 
-Next Stage: Configure SSH for secure remote device management, followed by switch port security and ACLs.
+### Remaining Tasks
+- [ ] Configure and test Access Control Lists (ACLs).
+- [ ] Perform additional connectivity and security tests.
+- [ ] Complete the final project documentation.
+- [ ] Perform final network verification.
+- [ ] Upload the completed Cisco Packet Tracer `.pkt` file.
 
-This project is being developed step by step using Cisco Packet Tracer. Configuration files, documentation, screenshots, and test results will be added as each stage is completed.
+### Project Goals
+- Develop practical Cisco networking and troubleshooting skills.
+- Understand how VLANs, routing, DHCP, and network security work together.
+- Build a documented networking portfolio for internship applications.
+- Gain hands-on experience with networking concepts covered in CCNA studies.
+
+### Project Status
+**Completed:**
+- Topology design and VLAN configuration.
+- IPv4 addressing and subnetting.
+- Router-on-a-stick inter-VLAN routing.
+- Static routing between the campuses.
+- DHCP pools and DHCP relay.
+- DHCP client verification.
+- Connectivity testing.
+- HTTP web server configuration and testing.
+- SSH Version 2 configuration on all six network devices.
+- Switch port security on six PC-facing access ports.
+- SSH and port security verification.
+
+**Next Stage:** Access Control List (ACL) configuration, additional security testing, and final project verification.
+
+*This project is being developed step by step using Cisco Packet Tracer. Configuration files, documentation, screenshots, and test results are added as each stage is completed.*
+
+
+
