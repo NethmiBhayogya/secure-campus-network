@@ -8,7 +8,7 @@ The diagram below illustrates the planned network design for the main and branch
 
 ![Secure University Campus Network Topology](Day-01-Topology-Design/campus-topology.png.png)
 
-*Note: IP addressing, inter-VLAN routing, DHCP, campus routing, and security configurations will be implemented and tested in upcoming stages.*
+The network topology was implemented and configured in Cisco Packet Tracer. VLANs, IP addressing, inter-VLAN routing, DHCP, campus routing, network services, and security policies were configured and verified throughout the project.
 
 ## Project Objectives
 
@@ -30,27 +30,17 @@ Test connectivity and document the implementation.
 
 ## Technology Stack
 
-Cisco Packet Tracer
-
-IPv4 Addressing and Subnetting
-
-VLANs and Trunking
-
-Router-on-a-Stick Inter-VLAN Routing
-
-Static Routing
-
-DHCP (planned)
-
-Web Server Configuration (planned)
-
-SSH (planned)
-
-Switch Port Security (planned)
-
-Wireless LAN (WLAN)
-
-Access Control Lists (ACLs) (planned)
+- Cisco Packet Tracer
+- IPv4 Addressing and Subnetting
+- VLANs and Trunking
+- Router-on-a-Stick Inter-VLAN Routing
+- Static Routing
+- DHCP and DHCP Relay
+- HTTP/HTTPS Web Server Configuration
+- SSH Version 2
+- Switch Port Security
+- Wireless LAN (WLAN)
+- Extended Access Control Lists (ACLs)
 
 ## Network Design
 
