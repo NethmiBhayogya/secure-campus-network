@@ -455,25 +455,120 @@ show ip interface gigabitEthernet 0/0.60
 show running-config
 ```
 
+## Day 07 — Final Network Verification
+
+### Objectives
+
+- Perform final verification of all router and switch configurations.
+- Verify VLANs, trunk links, IP addressing, and routing.
+- Confirm SSH and switch port security configurations.
+- Test end-to-end connectivity between the main and branch campuses.
+- Verify ACL security policies and web server accessibility.
+- Save the configurations of all network devices.
+
+### 1. Network Device Configuration Verification
+
+Final configuration checks were performed on all six network devices.
+
+**Routers:**
+- R1-MAIN
+- R2-BRANCH
+
+**Switches:**
+- SW1-CORE
+- SW2-ADMIN
+- SW3-FACULTY
+- SW4-BRANCH
+
+The following configurations were verified:
+
+- VLAN configurations and access port assignments.
+- Trunk links and VLAN forwarding.
+- Router subinterfaces and IP addressing.
+- Static routes between the main and branch campuses.
+- DHCP relay configurations.
+- Extended ACLs and their application to the correct interfaces.
+- SSH Version 2 remote management.
+- Switch port security on six PC-facing access ports.
+
+### 2. End-to-End Connectivity Testing
+
+Connectivity tests were performed between the main and branch campuses.
+
+| Test | Source | Destination | Result |
+|---|---|---|---|
+| Main-to-branch student connectivity | PC3-STUDENT | PC6-BRANCH | PASS |
+| Branch-to-main student connectivity | PC6-BRANCH | PC3-STUDENT | PASS |
+| Branch student to web server | PC6-BRANCH | SERVER2-WEB | PASS |
+| Main ADMIN to branch student | PC1-ADMIN | PC6-BRANCH | BLOCKED |
+
+Both student-to-student connectivity tests completed successfully with four replies and 0% packet loss.
+
+The ADMIN-to-branch-student communication was blocked according to the configured student network access policy.
+
+### 3. Web Server Verification
+
+The main-campus web server was tested from the branch-campus student computer.
+
+**Server Details:**
+- Server Name: SERVER2-WEB
+- IP Address: 10.10.50.20
+- Default Gateway: 10.10.50.1
+
+| Test | Protocol | Result |
+|---|---|---|
+| Connectivity to web server | ICMP | PASS |
+| Web page access | HTTP (TCP Port 80) | PASS |
+| Secure web page access | HTTPS (TCP Port 443) | PASS |
+
+The Cisco Packet Tracer welcome page loaded successfully using both HTTP and HTTPS.
+
+### 4. Final Security Verification
+
+The configured security policies were reviewed and tested.
+
+- Guest Wi-Fi users were restricted from accessing internal campus networks.
+- Guest devices could communicate with their default gateways and obtain IP addresses through DHCP.
+- Student networks could access the university web server.
+- Student networks were restricted from accessing ADMIN and FINANCE networks.
+- Communication between the main-campus and branch-campus student networks was successfully verified.
+
+### 5. Device Configuration Backup
+
+The running configurations of all six network devices were saved to their startup configurations.
+
+Command used:
+
+```cisco
+copy running-config startup-config
+```
+
+All six devices returned the `[OK]` confirmation.
+
+### Day 07 Outcome
+
+Final configuration verification and end-to-end testing were completed successfully. The main and branch campus networks, network services, and configured security policies were verified using Cisco Packet Tracer.
+
+---
+
 ## Project Summary & Status
 
 ### What I Learned
 
-Through this project, practical experience was gained in:
+Through this project, I gained practical experience in:
 
 - Designing a campus network with multiple departments and locations.
 - Creating VLANs and configuring trunk links.
-- Implementing inter-VLAN routing using router-on-a-stick.
+- Implementing inter-VLAN routing using Router-on-a-Stick.
 - Configuring IPv4 addressing and static routing.
 - Setting up DHCP pools and DHCP relay.
-- Configuring and testing an HTTP web server.
+- Configuring and testing an HTTP/HTTPS web server.
 - Enabling secure remote management using SSH Version 2.
 - Configuring switch port security and sticky MAC address learning.
 - Implementing Extended ACLs to control network traffic.
 - Restricting unauthorized access between network segments.
 - Verifying network configurations using Cisco IOS commands.
-- Troubleshooting connectivity and documenting network implementations.
-
+- Troubleshooting connectivity issues and documenting network implementations.
 
 ### Project Goals
 
@@ -484,7 +579,24 @@ Through this project, practical experience was gained in:
 
 ### Project Status
 
-- **Completed:** Days 1–6, including network design, VLANs, routing, DHCP, web server configuration, SSH, port security, and ACL implementation.
-- **Next Stage:** Day 7 – Final Network Verification and Project Completion.
+**All seven implementation stages have been completed.**
 
-> *Note: This project is being developed step by step using Cisco Packet Tracer. Configuration files, documentation, and test results are maintained as each stage is completed.*
+| Day | Implementation Stage | Status |
+|---|---|---|
+| Day 01 | Topology Design and VLAN Configuration | Completed |
+| Day 02 | IP Addressing and Routing | Completed |
+| Day 03 | DHCP Configuration | Completed |
+| Day 04 | Web Server Configuration | Completed |
+| Day 05 | SSH and Port Security | Completed |
+| Day 06 | Access Control Lists (ACLs) | Completed |
+| Day 07 | Final Network Verification | Completed |
+
+**Final Outcome:** Network configuration, security implementation, connectivity testing, and documentation have been completed successfully.
+
+The final Cisco Packet Tracer (`.pkt`) project file will be included in this repository.
+
+---
+
+*This project was developed step by step using Cisco Packet Tracer to gain practical experience in enterprise networking, network security, and troubleshooting.*
+
+
