@@ -96,6 +96,8 @@ The routers are connected through a point-to-point Ethernet link using the 10.10
 | AP2-BRANCH | `10.10.80.2` | `10.10.80.1` |
 | LAPTOP2-STAFF | `10.10.80.10` | `10.10.80.1` |
 
+**Note:** The addresses shown above represent the initial IP addressing plan. Client devices were later configured to obtain their IPv4 addresses automatically through DHCP. Servers and access points retain their static IP addresses.
+
 
 ## Day 1 — Topology Design and VLAN Configuration
 
@@ -289,7 +291,7 @@ SSH Version 2 was configured on all six network devices to provide secure remote
 | Device | Management VLAN | Management IP Address |
 | :--- | :--- | :--- |
 | `R1-MAIN` | VLAN 10 | `10.10.10.1` |
-| `R2-BRANCH` | VLAN 70 | `10.10.70.1` |
+| `R2-BRANCH` | VLAN 30 | `10.10.70.1` |
 | `SW1-CORE` | VLAN 10 | `10.10.10.3` |
 | `SW2-ADMIN` | VLAN 10 | `10.10.10.2` |
 | `SW3-FACULTY` | VLAN 10 | `10.10.10.4` |
