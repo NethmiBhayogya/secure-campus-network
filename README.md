@@ -346,12 +346,121 @@ Port security was implemented on six PC-facing access ports to prevent unauthori
 - Dynamic sticky learning successfully registered connected device MAC addresses into running configuration.
 - Total security violations across all monitored ports: **0**.
 
+# Campus Network Security Implementation & Access Control Lists (ACLs)
+
+## Day 06 — Access Control Lists (ACLs)
+
+### Objectives
+- Implement **Extended Access Control Lists (ACLs)** on the main and branch campus routers.
+- Restrict guest Wi-Fi users from accessing internal campus networks.
+- Prevent student networks from accessing **ADMIN** and **FINANCE** networks.
+- Allow students to access the university web server.
+- Maintain **DHCP functionality** and required network communication.
+- Verify permitted and denied traffic through connectivity tests.
+
 ---
 
-### Project Summary & Status
+### 1. ACL Implementation
+Four Extended ACLs were configured and applied **inbound** on the appropriate router subinterfaces.
+
+| Router | ACL Name | Interface | Direction |
+| :--- | :--- | :--- | :--- |
+| **R1-MAIN** | `GUEST_MAIN_IN` | `g0/0.60` | Inbound |
+| **R1-MAIN** | `STUDENT_MAIN_IN` | `g0/0.30` | Inbound |
+| **R2-BRANCH** | `GUEST_BRANCH_IN` | `g0/0.60` | Inbound |
+| **R2-BRANCH** | `STUDENT_BRANCH_IN` | `g0/0.30` | Inbound |
+
+---
+
+### 2. Guest Network Restrictions
+The following ACLs were configured:
+- `GUEST_MAIN_IN`
+- `GUEST_BRANCH_IN`
+
+**Security Rules:**
+- **Permit** DHCP requests.
+- **Permit** communication with the guest network's default gateway.
+- **Deny** access to internal private campus networks (`10.0.0.0/8`).
+- **Permit** other destinations according to the ACL rules.
+
+> **Result:** Prevents guest users from accessing internal university resources, including ADMIN, FINANCE, student, IT, and server networks.
+
+---
+
+### 3. Student Network Restrictions
+The following ACLs were configured:
+- `STUDENT_MAIN_IN`
+- `STUDENT_BRANCH_IN`
+
+**Security Rules:**
+- **Permit** DHCP requests.
+- **Permit** HTTP traffic (TCP port 80) to the university web server.
+- **Permit** HTTPS traffic (TCP port 443) to the university web server.
+- **Permit** ICMP traffic to the web server for connectivity testing.
+- **Deny** access to the ADMIN network (`10.10.10.0/24`).
+- **Deny** access to the FINANCE network (`10.10.20.0/24`).
+- **Permit** other traffic from the student subnets.
+
+* **University Web Server IP:** `10.10.50.20`
+
+---
+
+### 4. Connectivity Verification
+The following tests were performed after applying the ACL configurations:
+
+| Test Source | Destination | Expected / Actual Result |
+| :--- | :--- | :--- |
+| **Main guest gateway access** (`LAPTOP1-GUEST`) | `10.10.60.1` | **PASS** |
+| **Main guest to ADMIN** (`LAPTOP1-GUEST`) | `10.10.10.1` | **BLOCKED** |
+| **Main guest to FINANCE** (`LAPTOP1-GUEST`) | `10.10.20.1` | **BLOCKED** |
+| **Main guest to Web Server** (`LAPTOP1-GUEST`) | `10.10.50.20` | **BLOCKED** |
+| **Branch guest gateway access** (`LAPTOP2-GUEST`) | `10.10.80.1` | **PASS** |
+| **Branch guest to ADMIN** (`LAPTOP2-GUEST`) | `10.10.10.1` | **BLOCKED** |
+| **Branch guest to FINANCE** (`LAPTOP2-GUEST`) | `10.10.20.1` | **BLOCKED** |
+| **Branch guest to Web Server** (`LAPTOP2-GUEST`) | `10.10.50.20` | **BLOCKED** |
+| **Main student gateway access** (`PC3-STUDENT`) | `10.10.30.1` | **PASS** |
+| **Main student to Web Server** (`PC3-STUDENT`) | `10.10.50.20` | **PASS** |
+| **Main student to ADMIN** (`PC3-STUDENT`) | `10.10.10.1` | **BLOCKED** |
+| **Main student to FINANCE** (`PC3-STUDENT`) | `10.10.20.1` | **BLOCKED** |
+| **Branch student gateway access** (`PC6-BRANCH`) | `10.10.70.1` | **PASS** |
+| **Branch student to Web Server** (`PC6-BRANCH`) | `10.10.50.20` | **PASS** |
+| **Branch student to ADMIN** (`PC6-BRANCH`) | `10.10.10.1` | **BLOCKED** |
+| **Branch student to FINANCE** (`PC6-BRANCH`) | `10.10.20.1` | **BLOCKED** |
+
+---
+
+### 5. Web Server Access Verification
+HTTP access to the university web server was tested from both main and branch student devices.
+
+- **Web Server URL:** `http://10.10.50.20`
+- **Verification:** Both student devices successfully loaded the Cisco Packet Tracer default web page.
+
+---
+
+### 6. DHCP Verification After ACL Implementation
+DHCP configurations were checked to confirm that clients retained their correct IP addressing after ACL implementation.
+
+| Device | Assigned IPv4 Address | Default Gateway | Subnet Mask |
+| :--- | :--- | :--- | :--- |
+| **Main Guest Laptop** | `10.10.60.100` | `10.10.60.1` | `255.255.255.0` |
+| **Branch Guest Laptop** | `10.10.80.102` | `10.10.80.1` | `255.255.255.0` |
+| **Main Student PC** | `10.10.30.101` | `10.10.30.1` | `255.255.255.0` |
+| **Branch Student PC** | `10.10.70.100` | `10.10.70.1` | `255.255.255.0` |
+
+#### ACL Verification Commands Executed:
+```bash
+show access-lists
+show ip interface gigabitEthernet 0/0.30
+show ip interface gigabitEthernet 0/0.60
+show running-config
+```
+
+## Project Summary & Status
 
 ### What I Learned
-Through this project, I gained practical experience in:
+
+Through this project, practical experience was gained in:
+
 - Designing a campus network with multiple departments and locations.
 - Creating VLANs and configuring trunk links.
 - Implementing inter-VLAN routing using router-on-a-stick.
@@ -360,39 +469,22 @@ Through this project, I gained practical experience in:
 - Configuring and testing an HTTP web server.
 - Enabling secure remote management using SSH Version 2.
 - Configuring switch port security and sticky MAC address learning.
+- Implementing Extended ACLs to control network traffic.
+- Restricting unauthorized access between network segments.
 - Verifying network configurations using Cisco IOS commands.
 - Troubleshooting connectivity and documenting network implementations.
 
-### Remaining Tasks
-- [ ] Configure and test Access Control Lists (ACLs).
-- [ ] Perform additional connectivity and security tests.
-- [ ] Complete the final project documentation.
-- [ ] Perform final network verification.
-- [ ] Upload the completed Cisco Packet Tracer `.pkt` file.
 
 ### Project Goals
+
 - Develop practical Cisco networking and troubleshooting skills.
 - Understand how VLANs, routing, DHCP, and network security work together.
 - Build a documented networking portfolio for internship applications.
 - Gain hands-on experience with networking concepts covered in CCNA studies.
 
 ### Project Status
-**Completed:**
-- Topology design and VLAN configuration.
-- IPv4 addressing and subnetting.
-- Router-on-a-stick inter-VLAN routing.
-- Static routing between the campuses.
-- DHCP pools and DHCP relay.
-- DHCP client verification.
-- Connectivity testing.
-- HTTP web server configuration and testing.
-- SSH Version 2 configuration on all six network devices.
-- Switch port security on six PC-facing access ports.
-- SSH and port security verification.
 
-**Next Stage:** Access Control List (ACL) configuration, additional security testing, and final project verification.
+- **Completed:** Days 1–6, including network design, VLANs, routing, DHCP, web server configuration, SSH, port security, and ACL implementation.
+- **Next Stage:** Day 7 – Final Network Verification and Project Completion.
 
-*This project is being developed step by step using Cisco Packet Tracer. Configuration files, documentation, screenshots, and test results are added as each stage is completed.*
-
-
-
+> *Note: This project is being developed step by step using Cisco Packet Tracer. Configuration files, documentation, and test results are maintained as each stage is completed.*
